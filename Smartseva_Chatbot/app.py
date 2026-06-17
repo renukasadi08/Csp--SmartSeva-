@@ -43,19 +43,36 @@ if not api_key:
     st.stop()
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-# Free model on OpenRouter — no billing required.
-# You can swap this for another free model from openrouter.ai/models if needed.
+# "openrouter/free" is a ROUTER model — it automatically picks a working
+# free model for you instead of hardcoding one specific model name.
+# This avoids breakage when individual free model IDs get renamed or
+# removed (which happens often). No billing required.
 OPENROUTER_MODEL = "openrouter/free"
 
 # ══════════════════════════════════════════════════════════════
 # LOAD JSON DATA
+#
+# FIX: Use an ABSOLUTE path anchored to this script's own folder,
+# instead of a relative path like "data/services.json".
+#
+# Relative paths are resolved against the process's CURRENT WORKING
+# DIRECTORY, which on Streamlit Cloud is not always the same folder
+# where app.py physically lives (especially when app.py sits inside
+# a subfolder of the repo). This caused "file not found" even though
+# the file genuinely existed right next to app.py.
+#
+# os.path.dirname(os.path.abspath(__file__)) always points to the
+# folder containing THIS script, regardless of working directory.
 # ══════════════════════════════════════════════════════════════
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def load_json(path, label):
+    full_path = os.path.join(BASE_DIR, path)
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open(full_path, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
-        st.warning(f"⚠️ '{path}' not found — {label} will be skipped.")
+        st.warning(f"⚠️ '{full_path}' not found — {label} will be skipped.")
         return {}
     except json.JSONDecodeError:
         st.warning(f"⚠️ '{path}' has invalid JSON — {label} will be skipped.")

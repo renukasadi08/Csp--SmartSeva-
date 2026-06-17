@@ -1,0 +1,157 @@
+{
+  "services": [
+    {
+      "name": "Aadhaar Card",
+      "required_documents": [
+        "Identity Proof",
+        "Address Proof",
+        "Existing Aadhaar Card (if update)"
+      ],
+      "steps_to_apply": [
+        "Visit Aadhaar Enrolment Center or use myAadhaar Portal for updates",
+        "Fill application",
+        "Submit documents",
+        "Complete biometric verification if required",
+        "Collect acknowledgement slip"
+      ],
+      "fee": "New enrolment: Free; Mandatory biometric updates (ages 5 & 15): Free; Demographic updates: ₹50; Biometric updates: ₹100",
+      "processing_time": "Around 7–30 days"
+    },
+    {
+      "name": "PAN Card",
+      "required_documents": [
+        "Aadhaar Card",
+        "Passport size photo",
+        "Address proof",
+        "Date of birth proof"
+      ],
+      "steps_to_apply": [
+        "Apply through NSDL/Protean, UTIITSL, or the Income Tax e-Filing Portal",
+        "Fill form",
+        "Upload documents",
+        "Pay fee",
+        "Submit application"
+      ],
+      "fee": "Physical PAN: Around ₹107; e-PAN: Much cheaper or free via e-Filing Portal",
+      "processing_time": "7–15 working days"
+    },
+    {
+      "name": "Passport",
+      "required_documents": [
+        "Aadhaar Card",
+        "Address proof",
+        "Birth certificate",
+        "Passport size photo"
+      ],
+      "steps_to_apply": [
+        "Register on Passport Seva Portal",
+        "Fill application",
+        "Pay fee",
+        "Book appointment",
+        "Attend Passport Seva Kendra"
+      ],
+      "fee": "36-page booklet: ₹1,500; 60-page booklet: ₹2,000; Tatkal: ₹3,500",
+      "processing_time": "2–4 weeks (depends on verification)"
+    },
+    {
+      "name": "Income Certificate",
+      "required_documents": [
+        "Aadhaar Card",
+        "Address proof",
+        "Income proof",
+        "Application form"
+      ],
+      "steps_to_apply": [
+        "Apply through AP MeeSeva Portal or Village/Ward Secretariat",
+        "Upload documents",
+        "Verification",
+        "Download certificate after approval"
+      ],
+      "fee": "Government fee: ₹10–₹20; MeeSeva/CSC service charges: Around ₹30–₹50",
+      "processing_time": "7–15 days"
+    },
+    {
+      "name": "Caste Certificate",
+      "required_documents": [
+        "Aadhaar Card",
+        "Address proof",
+        "Caste proof documents",
+        "Application form"
+      ],
+      "steps_to_apply": [
+        "Apply through AP MeeSeva Portal or Village/Ward Secretariat",
+        "Submit documents",
+        "Verification",
+        "Receive certificate"
+      ],
+      "fee": "Government fee: ₹10–₹20; MeeSeva/CSC service charges: Around ₹30–₹50",
+      "processing_time": "7–30 days"
+    },
+    {
+      "name": "Residence Certificate",
+      "required_documents": [
+        "Aadhaar Card",
+        "Address proof",
+        "Passport size photo"
+      ],
+      "steps_to_apply": [
+        "Apply through AP MeeSeva Portal or Village/Ward Secretariat",
+        "Upload documents",
+        "Verification",
+        "Certificate issued"
+      ],
+      "fee": "Government fee: ₹10–₹20; MeeSeva/CSC service charges: Around ₹30–₹50",
+      "processing_time": "7–15 days"
+    },
+    {
+      "name": "Driving Licence",
+      "required_documents": [
+        "Aadhaar Card",
+        "Age proof",
+        "Address proof",
+        "Passport size photo"
+      ],
+      "steps_to_apply": [
+        "Apply for Learner's Licence via Sarathi Parivahan Portal",
+        "Pass LLR test",
+        "Practice driving",
+        "Book Driving Skill Test",
+        "Receive licence"
+      ],
+      "fee": "LLR Test: ₹150; Driving Skill Test: ₹300; Smart Card/DL Issuance: ₹200",
+      "processing_time": "1–4 weeks"
+    },
+    {
+      "name": "Voter ID",
+      "required_documents": [
+        "Aadhaar Card",
+        "Address proof",
+        "Age proof",
+        "Photo"
+      ],
+      "steps_to_apply": [
+        "Apply through Voter Service Portal",
+        "Fill form",
+        "Upload documents",
+        "Submit application"
+      ],
+      "fee": "Free for registration and corrections",
+      "processing_time": "Around 2–4 weeks"
+    },
+    {
+      "name": "Birth Certificate",
+      "required_documents": [
+        "Birth details",
+        "Parent ID proof",
+        "Address proof"
+      ],
+      "steps_to_apply": [
+        "Register at hospital/local municipality",
+        "Submit documents",
+        "Receive certificate"
+      ],
+      "fee": "Timely registration: Free; Late registration: Small fee",
+      "processing_time": "7–21 days"
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "scholarships": [
+    {
+      "name": "Central Sector Scheme of Scholarships for College and University Students (CSSS)",
+      "category": "Merit Scholarship",
+      "eligibility": "Meritorious Class 12 students pursuing UG/PG courses",
+      "documents_required": [
+        "Class 12 Marksheet",
+        "Income Certificate",
+        "Admission Proof",
+        "Aadhaar",
+        "Bank Account Details"
+      ]
+    },
+    {
+      "name": "National Means-cum-Merit Scholarship (NMMS)",
+      "category": "School Scholarship",
+      "eligibility": "Meritorious students studying in Classes 9–12 from low-income families",
+      "documents_required": [
+        "Income Certificate",
+        "School Certificate",
+        "Aadhaar",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "PM YASASVI Scholarship",
+      "category": "OBC/EBC Scholarship",
+      "eligibility": "OBC, EBC and DNT students meeting income criteria",
+      "documents_required": [
+        "Category Certificate",
+        "Income Certificate",
+        "Marksheet",
+        "Aadhaar",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "AICTE Pragati Scholarship",
+      "category": "Girls Scholarship",
+      "eligibility": "Girl students pursuing AICTE-approved technical education",
+      "documents_required": [
+        "Admission Proof",
+        "Income Certificate",
+        "Aadhaar",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "AICTE Saksham Scholarship",
+      "category": "Disability Scholarship",
+      "eligibility": "Students with benchmark disabilities pursuing technical education",
+      "documents_required": [
+        "Disability Certificate",
+        "Admission Proof",
+        "Income Certificate",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "AICTE Swanath Scholarship",
+      "category": "Welfare Scholarship",
+      "eligibility": "Orphans, children of martyrs, and eligible vulnerable students",
+      "documents_required": [
+        "Supporting Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "PM-USP Special Scholarship for J&K and Ladakh",
+      "category": "Regional Scholarship",
+      "eligibility": "Students from Jammu, Kashmir and Ladakh",
+      "documents_required": [
+        "Domicile Certificate",
+        "Admission Proof",
+        "Income Certificate",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "National Fellowship and Scholarship for ST Students",
+      "category": "ST Scholarship",
+      "eligibility": "Scheduled Tribe students pursuing higher education",
+      "documents_required": [
+        "ST Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Top Class Education Scheme for SC Students",
+      "category": "SC Scholarship",
+      "eligibility": "SC students admitted to premier institutions",
+      "documents_required": [
+        "SC Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Top Class Education Scheme for OBC, EBC and DNT Students",
+      "category": "OBC Scholarship",
+      "eligibility": "OBC, EBC and DNT students admitted to premier institutions",
+      "documents_required": [
+        "Category Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Top Class Education Scheme for Students with Disabilities",
+      "category": "Disability Scholarship",
+      "eligibility": "Students with benchmark disabilities studying in top institutions",
+      "documents_required": [
+        "Disability Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Post Matric Scholarship for Students with Disabilities",
+      "category": "Post-Matric Scholarship",
+      "eligibility": "Students with disabilities studying after Class 10",
+      "documents_required": [
+        "Disability Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Pre Matric Scholarship for Students with Disabilities",
+      "category": "Pre-Matric Scholarship",
+      "eligibility": "Students with disabilities studying in school",
+      "documents_required": [
+        "Disability Certificate",
+        "Income Certificate",
+        "School Certificate",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Merit-cum-Means Scholarship for Professional and Technical Courses",
+      "category": "Minority Scholarship",
+      "eligibility": "Minority students pursuing professional and technical courses",
+      "documents_required": [
+        "Minority Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Pre Matric Scholarship for Minorities",
+      "category": "Minority Scholarship",
+      "eligibility": "Minority students studying in school",
+      "documents_required": [
+        "Minority Certificate",
+        "Income Certificate",
+        "School Certificate",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Post Matric Scholarship for Minorities",
+      "category": "Minority Scholarship",
+      "eligibility": "Minority students studying after Class 10",
+      "documents_required": [
+        "Minority Certificate",
+        "Income Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "INSPIRE Scholarship",
+      "category": "Science Scholarship",
+      "eligibility": "Top-performing science students pursuing higher education",
+      "documents_required": [
+        "Marksheet",
+        "Admission Proof",
+        "Aadhaar",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Ishan Uday Scholarship",
+      "category": "Regional Scholarship",
+      "eligibility": "Students from North Eastern states pursuing higher education",
+      "documents_required": [
+        "Domicile Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Prime Minister's Scholarship Scheme (PMSS)",
+      "category": "Defence Scholarship",
+      "eligibility": "Children of ex-servicemen and defence personnel",
+      "documents_required": [
+        "Service Certificate",
+        "Admission Proof",
+        "Bank Details"
+      ]
+    },
+    {
+      "name": "Begum Hazrat Mahal National Scholarship",
+      "category": "Girls Scholarship",
+      "eligibility": "Meritorious minority girl students",
+      "documents_required": [
+        "Minority Certificate",
+        "Income Certificate",
+        "Marksheet",
+        "Bank Details"
+      ]
+    }
+  ]
+}

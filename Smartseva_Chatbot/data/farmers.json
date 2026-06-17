@@ -1,0 +1,322 @@
+{
+  "schemes": [
+    {
+      "name": "PM-KISAN Samman Nidhi",
+      "category": "Income Support",
+      "eligibility": "Small & marginal landholding farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Land records",
+        "Bank passbook",
+        "Mobile number"
+      ]
+    },
+    {
+      "name": "Kisan Credit Card (KCC)",
+      "category": "Agricultural Credit",
+      "eligibility": "Farmers, dairy & fisheries farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof",
+        "Bank account",
+        "Photos"
+      ]
+    },
+    {
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "category": "Crop Insurance",
+      "eligibility": "Farmers growing notified crops",
+      "documents_required": [
+        "Aadhaar",
+        "Land records",
+        "Sowing proof",
+        "Bank account"
+      ]
+    },
+    {
+      "name": "PM Krishi Sinchai Yojana (PMKSY)",
+      "category": "Irrigation",
+      "eligibility": "Farmers with cultivable land",
+      "documents_required": [
+        "Aadhaar",
+        "Land documents",
+        "Bank details"
+      ]
+    },
+    {
+      "name": "Soil Health Card Scheme",
+      "category": "Soil & Fertility",
+      "eligibility": "All farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Land details"
+      ]
+    },
+    {
+      "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+      "category": "Organic Farming",
+      "eligibility": "Farmers practicing organic farming",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof",
+        "Farmer group details"
+      ]
+    },
+    {
+      "name": "National Agriculture Market (e-NAM)",
+      "category": "Marketing",
+      "eligibility": "Registered farmers & traders",
+      "documents_required": [
+        "Aadhaar",
+        "Bank account",
+        "Mobile number"
+      ]
+    },
+    {
+      "name": "Agriculture Infrastructure Fund (AIF)",
+      "category": "Agri Infrastructure",
+      "eligibility": "Farmers, FPOs, PACS, agri entrepreneurs",
+      "documents_required": [
+        "Project report",
+        "Aadhaar",
+        "PAN",
+        "Bank documents"
+      ]
+    },
+    {
+      "name": "PM Kisan Maandhan Yojana",
+      "category": "Pension",
+      "eligibility": "Small & marginal farmers aged 18–40",
+      "documents_required": [
+        "Aadhaar",
+        "Bank account",
+        "Land records"
+      ]
+    },
+    {
+      "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
+      "category": "Agriculture Development",
+      "eligibility": "Farmers & agri entrepreneurs",
+      "documents_required": [
+        "Aadhaar",
+        "Project details",
+        "Land proof"
+      ]
+    },
+    {
+      "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+      "category": "Farm Machinery Subsidy",
+      "eligibility": "Farmers purchasing equipment",
+      "documents_required": [
+        "Aadhaar",
+        "Quotation",
+        "Land proof",
+        "Bank details"
+      ]
+    },
+    {
+      "name": "National Food Security Mission (NFSM)",
+      "category": "Crop Production",
+      "eligibility": "Farmers cultivating pulses, rice, wheat",
+      "documents_required": [
+        "Aadhaar",
+        "Land records"
+      ]
+    },
+    {
+      "name": "Mission for Integrated Development of Horticulture (MIDH)",
+      "category": "Horticulture",
+      "eligibility": "Fruit, vegetable & flower growers",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof",
+        "Bank passbook"
+      ]
+    },
+    {
+      "name": "National Mission on Oilseeds & Oil Palm (NMOOP)",
+      "category": "Oilseed Farming",
+      "eligibility": "Oilseed & oil palm farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Land documents"
+      ]
+    },
+    {
+      "name": "National Bamboo Mission",
+      "category": "Bamboo Cultivation",
+      "eligibility": "Farmers interested in bamboo farming",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof"
+      ]
+    },
+    {
+      "name": "Bee Keeping Development Scheme",
+      "category": "Apiculture",
+      "eligibility": "Beekeepers & farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Bank details",
+        "Training certificate"
+      ]
+    },
+    {
+      "name": "Dairy Entrepreneurship Development Scheme",
+      "category": "Dairy Farming",
+      "eligibility": "Dairy farmers & entrepreneurs",
+      "documents_required": [
+        "Aadhaar",
+        "Dairy unit details",
+        "Bank documents"
+      ]
+    },
+    {
+      "name": "Livestock Health & Disease Control Scheme",
+      "category": "Livestock",
+      "eligibility": "Cattle, goat & poultry farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Livestock details"
+      ]
+    },
+    {
+      "name": "Blue Revolution Scheme",
+      "category": "Fisheries",
+      "eligibility": "Fish farmers & fisheries sector",
+      "documents_required": [
+        "Aadhaar",
+        "Pond/farm proof",
+        "Bank details"
+      ]
+    },
+    {
+      "name": "PM Matsya Sampada Yojana (PMMSY)",
+      "category": "Fisheries",
+      "eligibility": "Fish farmers, hatcheries, entrepreneurs",
+      "documents_required": [
+        "Aadhaar",
+        "Project report",
+        "Bank details"
+      ]
+    },
+    {
+      "name": "Formation & Promotion of FPOs",
+      "category": "Farmer Producer Organizations",
+      "eligibility": "Farmer groups/FPOs",
+      "documents_required": [
+        "Registration documents",
+        "Aadhaar",
+        "PAN"
+      ]
+    },
+    {
+      "name": "Seed Village Programme",
+      "category": "Seed Development",
+      "eligibility": "Seed-producing farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Land details"
+      ]
+    },
+    {
+      "name": "Rainfed Area Development Programme",
+      "category": "Sustainable Farming",
+      "eligibility": "Rainfed area farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof"
+      ]
+    },
+    {
+      "name": "National Mission for Sustainable Agriculture (NMSA)",
+      "category": "Climate Resilient Farming",
+      "eligibility": "Farmers adopting sustainable methods",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof"
+      ]
+    },
+    {
+      "name": "Gramin Bhandaran Yojana",
+      "category": "Storage/Warehouse",
+      "eligibility": "Farmers & agri entrepreneurs",
+      "documents_required": [
+        "Project report",
+        "Land proof",
+        "Aadhaar"
+      ]
+    },
+    {
+      "name": "Integrated Scheme on Agriculture Marketing (ISAM)",
+      "category": "Marketing Infrastructure",
+      "eligibility": "Farmers & agri traders",
+      "documents_required": [
+        "Aadhaar",
+        "Business/farm details"
+      ]
+    },
+    {
+      "name": "Agri Clinics & Agri Business Centres Scheme",
+      "category": "Agri Entrepreneurship",
+      "eligibility": "Agriculture graduates",
+      "documents_required": [
+        "Degree certificate",
+        "Aadhaar",
+        "Bank details"
+      ]
+    },
+    {
+      "name": "Custom Hiring Centres Scheme",
+      "category": "Farm Equipment Rental",
+      "eligibility": "Farmers groups/FPOs",
+      "documents_required": [
+        "Aadhaar",
+        "Project details",
+        "Land proof"
+      ]
+    },
+    {
+      "name": "Per Drop More Crop Scheme",
+      "category": "Micro Irrigation",
+      "eligibility": "Farmers using drip/sprinkler irrigation",
+      "documents_required": [
+        "Aadhaar",
+        "Land proof",
+        "Irrigation details"
+      ]
+    },
+    {
+      "name": "National Livestock Mission (NLM)",
+      "category": "Animal Husbandry",
+      "eligibility": "Poultry, sheep, goat & pig farmers",
+      "documents_required": [
+        "Aadhaar",
+        "Livestock proof",
+        "Bank details"
+      ]
+    },
+    {
+      "name": "Crop Diversification Programme (CDP)",
+      "category": "Income Diversification",
+      "eligibility": "Farmers shifting to horticulture, pulses, oilseeds",
+      "documents_required": [
+        "Land record",
+        "Aadhaar",
+        "Bank account",
+        "Crop-diversification plan"
+      ]
+    },
+    {
+      "name": "Sub-Mission on Plant Protection & Plant Quarantine",
+      "category": "Crop Protection",
+      "eligibility": "Farmers under notified pest/disease control programmes",
+      "documents_required": [
+        "Land record",
+        "Aadhaar",
+        "Crop-area details",
+        "Spraying/inspection records"
+      ]
+    }
+  ]
+}

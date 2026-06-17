@@ -1,8 +1,8 @@
 import streamlit as st
 import json
-import google.generativeai as genai
 import os
 import io
+import requests
 from dotenv import load_dotenv
 
 # ══════════════════════════════════════════════════════════════
@@ -16,8 +16,8 @@ from dotenv import load_dotenv
 #
 # TEXT-TO-SPEECH (cloud-compatible):
 #   - gTTS: generates MP3 via Google's TTS API, played with st.audio()
-#     (replaces pyttsx3, which needs OS-level speech engines unavailable
-#     on Streamlit Cloud's Linux servers)
+#     (works on Windows, phone browsers, and Streamlit Cloud — no OS
+#     speech engine dependency like pyttsx3 had)
 # ══════════════════════════════════════════════════════════════
 try:
     from streamlit_mic_recorder import mic_recorder
@@ -33,17 +33,19 @@ except ImportError:
     TTS_AVAILABLE = False
 
 # ══════════════════════════════════════════════════════════════
-# CONFIG
+# CONFIG — OPENROUTER
 # ══════════════════════════════════════════════════════════════
 load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = os.getenv("OPENROUTER_API_KEY")
 if not api_key:
-    st.error("❌ GEMINI_API_KEY not found. Add it to your .env file (local) "
+    st.error("❌ OPENROUTER_API_KEY not found. Add it to your .env file (local) "
               "or to Streamlit Cloud Secrets (deployed).")
     st.stop()
 
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-2.0-flash")
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+# Free model on OpenRouter — no billing required.
+# You can swap this for another free model from openrouter.ai/models if needed.
+OPENROUTER_MODEL = "google/gemini-2.0-flash-exp:free"
 
 # ══════════════════════════════════════════════════════════════
 # LOAD JSON DATA
@@ -101,7 +103,7 @@ def find_single_best_match(query: str, items: list, name_key: str = "name"):
 
     if len(top_matches) == 1:
         return top_matches[0]
-    return None   # ambiguous tie → let Gemini handle it
+    return None   # ambiguous tie → let AI handle it
 
 # ══════════════════════════════════════════════════════════════
 # INTENT DETECTION
@@ -224,45 +226,53 @@ def show_scheme(item: dict, intent: str) -> str:
     return spoken
 
 # ══════════════════════════════════════════════════════════════
-# GEMINI AI
+# OPENROUTER AI CALL
 # ══════════════════════════════════════════════════════════════
-def ask_gemini(question: str):
-    prompt = (
-        "You are SmartSeva AI, an expert on Indian government public services, "
-        "AP and Telangana state schemes, scholarships, and welfare programs. "
-        "Give a clear, helpful, structured answer. "
-        "If the question is in Telugu, reply in Telugu.\n\n"
-        f"Question: {question}"
-    )
-    response = model.generate_content(prompt)
-    return response.text
+def ask_openrouter(question: str) -> str:
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": OPENROUTER_MODEL,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "You are SmartSeva AI, an expert on Indian government public services, "
+                    "AP and Telangana state schemes, scholarships, and welfare programs. "
+                    "Give a clear, helpful, structured answer. "
+                    "If the question is in Telugu, reply in Telugu."
+                )
+            },
+            {"role": "user", "content": question}
+        ]
+    }
+    response = requests.post(OPENROUTER_URL, headers=headers, json=payload, timeout=30)
+    response.raise_for_status()
+    data = response.json()
+    return data["choices"][0]["message"]["content"]
 
-def call_gemini_safely(query: str):
+def call_ai_safely(query: str):
     try:
-        return ask_gemini(query), None
-    except Exception as e:
-        err = str(e)
-        if "429" in err or "ResourceExhausted" in err or "quota" in err.lower():
+        return ask_openrouter(query), None
+    except requests.exceptions.HTTPError as e:
+        status = e.response.status_code if e.response is not None else None
+        if status == 429:
             return None, "quota"
-        elif "404" in err or "not found" in err.lower():
-            return None, "model"
-        elif "401" in err or "403" in err or "API_KEY" in err:
+        elif status == 401 or status == 403:
             return None, "key"
+        elif status == 404:
+            return None, "model"
         else:
-            return None, f"other: {err}"
+            return None, f"other: {e}"
+    except requests.exceptions.RequestException as e:
+        return None, f"other: {e}"
+    except (KeyError, IndexError) as e:
+        return None, f"other: Unexpected response format ({e})"
 
 # ══════════════════════════════════════════════════════════════
 # VOICE — SPEECH TO TEXT using browser-recorded audio
-#
-# HOW THIS WORKS ON STREAMLIT CLOUD:
-# 1. mic_recorder runs JavaScript in the USER'S browser to access
-#    THEIR microphone (not the server's) — this is why it works on
-#    Streamlit Cloud, unlike sr.Microphone() which needs a server mic.
-# 2. The recorded audio comes back as raw bytes (WAV format).
-# 3. We wrap those bytes in an in-memory file and pass them to
-#    speech_recognition's AudioFile reader.
-# 4. recognize_google() sends the audio to Google's free speech API
-#    and returns the transcribed text. No API key required for this.
 # ══════════════════════════════════════════════════════════════
 def transcribe_audio_bytes(audio_bytes: bytes):
     """Convert recorded browser audio (bytes) into text using Google STT."""
@@ -282,8 +292,6 @@ def transcribe_audio_bytes(audio_bytes: bytes):
 
 # ══════════════════════════════════════════════════════════════
 # VOICE — TEXT TO SPEECH using gTTS
-# Works identically on Windows, phone browsers, and Streamlit Cloud
-# because it just calls Google's TTS API over the internet.
 # ══════════════════════════════════════════════════════════════
 def speak_text(text: str):
     if not TTS_AVAILABLE:
@@ -292,7 +300,7 @@ def speak_text(text: str):
     if not text.strip():
         return
     try:
-        safe_text = text[:1500]   # keep requests fast and reliable
+        safe_text = text[:1500]
         tts = gTTS(text=safe_text, lang="en")
         audio_buffer = io.BytesIO()
         tts.write_to_fp(audio_buffer)
@@ -340,7 +348,6 @@ if not TTS_AVAILABLE:
 if "user_query" not in st.session_state:
     st.session_state["user_query"] = ""
 
-# Process recorded audio (only runs once per new recording)
 if SPEECH_AVAILABLE and audio is not None and audio.get("bytes"):
     with st.spinner("🎙️ Transcribing your voice…"):
         text, err = transcribe_audio_bytes(audio["bytes"])
@@ -403,8 +410,8 @@ if user_query and user_query.strip():
         found = True
 
     if not found:
-        with st.spinner("🤖 Asking Gemini AI…"):
-            answer, err = call_gemini_safely(query)
+        with st.spinner("🤖 Asking AI…"):
+            answer, err = call_ai_safely(query)
 
         if answer:
             st.subheader("🤖 AI Answer")
@@ -413,19 +420,23 @@ if user_query and user_query.strip():
 
         elif err == "quota":
             st.warning(
-                "⚠️ **Gemini AI quota exceeded.**\n\n"
-                "**To fix:** Go to https://aistudio.google.com/app/apikey → "
-                "create a new project with billing → generate a new key → "
-                "update your `.env` file (local) or Secrets (cloud) → restart.\n\n"
-                "💡 **Tip:** Add the missing service/scheme to your JSON files "
-                "so it works without AI."
+                "⚠️ **OpenRouter rate limit reached.**\n\n"
+                "Free models have a request-per-minute limit. "
+                "Wait a minute and try again, or add the missing service/scheme "
+                "to your JSON files so it works without AI."
             )
         elif err == "key":
-            st.error("❌ Invalid API key. Check your `.env` file or Streamlit Secrets.")
+            st.error(
+                "❌ Invalid OpenRouter API key. "
+                "Check that `OPENROUTER_API_KEY` in your `.env` file (or Streamlit Secrets) is correct."
+            )
         elif err == "model":
-            st.error("❌ Model error. Run: `pip install --upgrade google-generativeai`")
+            st.error(
+                "❌ Model not found. The free model name may have changed — "
+                "check https://openrouter.ai/models for current free model IDs."
+            )
         else:
-            st.error(f"❌ Error: {err}")
+            st.error(f"❌ AI error: {err}")
 
     if enable_tts and tts_parts:
         speak_text(" ".join(tts_parts))

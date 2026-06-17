@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 try:
     from streamlit_mic_recorder import mic_recorder
     import speech_recognition as sr
+    from pydub import AudioSegment
     SPEECH_AVAILABLE = True
 except ImportError:
     SPEECH_AVAILABLE = False
@@ -290,13 +291,33 @@ def call_ai_safely(query: str):
 
 # ══════════════════════════════════════════════════════════════
 # VOICE — SPEECH TO TEXT using browser-recorded audio
+#
+# FIX: streamlit_mic_recorder captures audio using the browser's
+# MediaRecorder API, which records in WebM/Opus format. However,
+# speech_recognition's AudioFile() can only read WAV, AIFF, or FLAC —
+# NOT WebM. Feeding WebM bytes directly caused:
+#   "Audio file could not be read as PCM WAV, AIFF/AIFF-C, or
+#    Native FLAC; check if file is corrupted or in another format"
+#
+# Fix: use pydub (which wraps ffmpeg) to convert the WebM bytes into
+# WAV bytes IN MEMORY first, then hand those WAV bytes to
+# speech_recognition. This requires ffmpeg to be available on the
+# server — added via packages.txt for Streamlit Cloud (see note below).
 # ══════════════════════════════════════════════════════════════
 def transcribe_audio_bytes(audio_bytes: bytes):
-    """Convert recorded browser audio (bytes) into text using Google STT."""
+    """Convert recorded browser audio (WebM bytes) into text using Google STT."""
     recognizer = sr.Recognizer()
     try:
-        audio_file = io.BytesIO(audio_bytes)
-        with sr.AudioFile(audio_file) as source:
+        # Step 1: Load the WebM audio using pydub (needs ffmpeg installed)
+        webm_audio = AudioSegment.from_file(io.BytesIO(audio_bytes))
+
+        # Step 2: Export it as WAV into an in-memory buffer
+        wav_buffer = io.BytesIO()
+        webm_audio.export(wav_buffer, format="wav")
+        wav_buffer.seek(0)
+
+        # Step 3: Now speech_recognition can read it correctly
+        with sr.AudioFile(wav_buffer) as source:
             audio_data = recognizer.record(source)
         text = recognizer.recognize_google(audio_data)
         return text, None

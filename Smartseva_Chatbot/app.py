@@ -45,7 +45,7 @@ if not api_key:
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # Free model on OpenRouter — no billing required.
 # You can swap this for another free model from openrouter.ai/models if needed.
-OPENROUTER_MODEL = "google/gemini-2.0-flash-exp:free"
+OPENROUTER_MODEL = "openrouter/free"
 
 # ══════════════════════════════════════════════════════════════
 # LOAD JSON DATA
